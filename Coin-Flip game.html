@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>coin-flip game</title>
+</head>
+<style>
+    *{font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif }
+</style>
+<script>
+    let side=Math.random()
+    let result=''
+    let guess=''
+</script>
+<body>
+    <h1>Coin-Flip game</h1>
+    <button onclick="
+    if(side>=0 && side<0.5){
+        result='Heads'
+    }
+    else{
+        result='Tails'
+    }
+    console.log(result)">Start</button><br>
+    <h2>Guess the side</h2>
+    <form><button onclick="
+        guess='Heads' 
+        if(guess===result){
+        alert(`Your guess is ${guess} and coins side is ${result}.\n
+            Your guess is correct`);
+    }
+    else{
+    alert(`Your guess is ${guess} and coins side is ${result}.\n
+        Your guess is incorrect`)}">Heads</button><br>
+    <button onclick="
+    guess='Tails'
+    if(guess===result){
+        alert(`Your guess is ${guess} and coins side is ${result}.\n
+            Your guess is correct`);
+    }
+    else{
+    alert(`Your guess is ${guess} and coins side is ${result}.\n
+        Your guess is incorrect`)
+    }
+     ">Tails</button>
+     </form>
+</body>
+</html>
