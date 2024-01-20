@@ -3,15 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper and Scissor</title>
 </head>
+<style>
+    .bn16 {
+        font-family: lato,sans-serif;
+        font-weight: bold;
+        font-size: 1em;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        color: #000000;
+        display: inline-block;
+        padding: 10px 40px 10px 40px;
+        position: relative;
+        border: 3px solid #ff0000;
+        border-radius: 25px;
+      }
+      
+</style>
 <script>
         let Score=
             JSON.parse(localStorage.getItem('item'))||{
                 Win:0,
                 Lose:0,
                 Tie:0
-            }
+            };
     let plyMove=''
     let result=''
     function cmpMove(){
@@ -48,7 +64,7 @@
             result=`Lose`
         }
         else if(plyMove==='Rock'&&computerMove==='Paper'){
-            result=`Lose`}
+            result=`Lose`};
 
             if(result==='Win'){
                 Score.Win+=1
@@ -58,27 +74,33 @@
             }
             else{
                 Score.Tie+=1
-            }
+            };
             localStorage.setItem('item',(JSON.stringify(Score)));
-
-            console.log(plyMove, computerMove)
-            
-            alert(localStorage.getItem('item'))
-    }
-
-</script>
+            console.log(plyMove, computerMove);
+            updt();
+            document.querySelector('.js-result').innerHTML=result;
+            document.querySelector('.js-move').innerHTML=`You ${plyMove},computer ${computerMove}`;
+        }
+        function updt(){
+        document.querySelector('.js-scr').innerHTML=`Win:${Score.Win} Lose:${Score.Lose} Tie:${Score.Tie}`;
+        }
+    </script>
 <body>
     <p>The Rock Paper Scissor Game</p>
-    <button onclick="
+    <button class="bn16" onclick="
     playGame('Rock')">Rock</button>
-    <button onclick="
+    <button class="bn16" onclick="
     playGame('Paper')">Paper</button>
-    <button onclick="
+    <button class="bn16" onclick="
     playGame('Scissor')">Scissors</button>
-    <button onclick="
+    <p class="js-result"></p>
+    <p class="js-move"></p>
+    <p class="js-scr"></p>
+    <button class="bn16" onclick="
     Score.Win=0
     Score.Lose=0
     Score.Tie=0
-    localStorage.removeItem('item')">Rest Score</button>
+    localStorage.removeItem('item')
+    updt();">Rest Score</button>
 </body>
 </html>
